@@ -1,0 +1,7 @@
+package student;
+
+message Student{
+    required int32 id=1;
+    required string name=2;
+    required int32 score=3;
+}
