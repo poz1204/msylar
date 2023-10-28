@@ -11,11 +11,12 @@
 namespace rocket {
 
 
+
 template<typename... Args>
 std::string formatString(const char* str, Args&&... args) {
+    int size = snprintf(nullptr, 0, str, args...);
+
     std::string result;
-    char* a = nullptr;
-    int size = snprintf(a, 0, str, args...);
     if (size > 0) {
         result.resize(size);
         snprintf(&result[0], size + 1, str, args...);
@@ -23,6 +24,9 @@ std::string formatString(const char* str, Args&&... args) {
 
     return result;
 }
+
+
+
 
 #define DEBUGLOG(str, ...) \
   if (rocket::Logger::GetGlobalLogger()->getLogLevel() <= rocket::Debug) \

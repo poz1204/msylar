@@ -11,7 +11,7 @@ public:
     typedef std::shared_ptr<AbstractProtocol> s_ptr;\
     virtual ~AbstractProtocol() {}
 
-    std::string m_req_id;     // 请求号，唯一标识一个请求或者响应
+    std::string m_msg_id;     // 请求号，唯一标识一个请求或者响应
 
 };
 

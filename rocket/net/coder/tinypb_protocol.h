@@ -1,5 +1,5 @@
 #ifndef ROCKET_NET_CODER_TINYPB_PROTOCOL_H
-#define ROCKET_NET_CODER_TINYPB_PROTOCOLH
+#define ROCKET_NET_CODER_TINYPB_PROTOCOL_H
 
 
 #include "rocket/net/coder/abstract_protocol.h"
@@ -18,8 +18,8 @@ public:
 
 public:
     int32_t m_pk_len {0};
-    int32_t m_req_id_len {0};
-    // m_req_id 继承父类
+    int32_t m_msg_id_len {0};
+    // m_msg_id 继承父类
 
     int32_t m_method_name_len {0};
     std::string m_method_name;

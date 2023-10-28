@@ -5,7 +5,6 @@
 #include "rocket/net/coder/abstract_coder.h"
 #include "rocket/net/coder/tinypb_protocol.h"
 
-
 namespace rocket {
 
 class TinyPBCoder : public AbstractCoder {

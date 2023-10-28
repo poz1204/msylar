@@ -43,7 +43,7 @@ void TcpServer::onAccept() {
     m_client_counts++;
     // client_fd 添加到 io 线程中
     IOThread* io_thread = m_io_thread_group->getIOThread();
-    TcpConnection::s_ptr connection = std::make_shared<TcpConnection>(io_thread->getEventLoop(), client_fd, 1024, client_addr);
+    TcpConnection::s_ptr connection = std::make_shared<TcpConnection>(io_thread->getEventLoop(), client_fd, 1024, client_addr, m_local_addr);
     connection->setState(Connected);
     
     m_client.insert(connection);
