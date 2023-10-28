@@ -152,7 +152,7 @@ void test_rpc_channel() {
 
 
 int main() {
-    rocket::Config::SetGlobalConfig("../conf/rocket.xml");
+    rocket::Config::SetGlobalConfig("../conf/rocket_client.xml");
     rocket::Logger::InitGlobalLogger();
 
     // test_connect();

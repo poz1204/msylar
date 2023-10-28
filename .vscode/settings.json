@@ -53,7 +53,13 @@
         "ctime": "cpp",
         "chrono": "cpp",
         "ratio": "cpp",
-        "semaphore": "cpp"
+        "semaphore": "cpp",
+        "cstring": "cpp",
+        "condition_variable": "cpp",
+        "unordered_set": "cpp",
+        "mutex": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp"
     },
     "terminal.integrated.fontSize": 14,
     "terminal.integrated.lineHeight": 0,
