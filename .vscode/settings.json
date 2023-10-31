@@ -64,5 +64,6 @@
     "terminal.integrated.fontSize": 14,
     "terminal.integrated.lineHeight": 0,
     "terminal.integrated.letterSpacing": 0,
-    "debug.console.fontSize": 15
+    "debug.console.fontSize": 15,
+    "editor.fontSize": 13
 }

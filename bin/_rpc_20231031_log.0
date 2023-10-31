@@ -1,0 +1,69 @@
+[DEBUG]	[23-10-31 17:00:45.75]	[5599:5599]	[rocket/net/timer_event.cc:16]	success create timer event, will excute at [1698742845075]
+[INFO]	[23-10-31 17:00:45.75]	[5599:5599]	[rocket/net/eventloop.cc:93]	wakeup fd = 4
+[INFO]	[23-10-31 17:00:45.75]	[5599:5599]	[rocket/net/eventloop.cc:183]	epoll_event.events = 1
+[DEBUG]	[23-10-31 17:00:45.75]	[5599:5599]	[rocket/net/eventloop.cc:183]	add event success, fd[4]
+[DEBUG]	[23-10-31 17:00:45.75]	[5599:5599]	[rocket/net/timer.cc:14]	timer fd = 5
+[INFO]	[23-10-31 17:00:45.75]	[5599:5599]	[rocket/net/eventloop.cc:183]	epoll_event.events = 32661
+[DEBUG]	[23-10-31 17:00:45.75]	[5599:5599]	[rocket/net/eventloop.cc:183]	add event success, fd[5]
+[INFO]	[23-10-31 17:00:45.75]	[5599:5599]	[rocket/net/eventloop.cc:65]	succ create event loop in thread 5599
+[DEBUG]	[23-10-31 17:00:45.75]	[5599:5599]	[rocket/net/timer.cc:106]	timer reset to 1698742845175
+[DEBUG]	[23-10-31 17:00:45.75]	[5599:5599]	[testcases/test_rpc_server.cc:64]	create addr 127.0.0.1:0
+[INFO]	[23-10-31 17:00:45.76]	[5599:5602]	[rocket/net/eventloop.cc:93]	wakeup fd = 8
+[INFO]	[23-10-31 17:00:45.76]	[5599:5602]	[rocket/net/eventloop.cc:183]	epoll_event.events = 1
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5602]	[rocket/net/eventloop.cc:183]	add event success, fd[8]
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5602]	[rocket/net/timer.cc:14]	timer fd = 9
+[INFO]	[23-10-31 17:00:45.76]	[5599:5602]	[rocket/net/eventloop.cc:183]	epoll_event.events = 1
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5602]	[rocket/net/eventloop.cc:183]	add event success, fd[9]
+[INFO]	[23-10-31 17:00:45.76]	[5599:5602]	[rocket/net/eventloop.cc:65]	succ create event loop in thread 5602
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5602]	[rocket/net/io_thread.cc:48]	IOThread 5602 created, wait start semaphore
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5599]	[rocket/net/io_thread.cc:23]	io thread:[5602] create success
+[INFO]	[23-10-31 17:00:45.76]	[5599:5603]	[rocket/net/eventloop.cc:93]	wakeup fd = 11
+[INFO]	[23-10-31 17:00:45.76]	[5599:5603]	[rocket/net/eventloop.cc:183]	epoll_event.events = 1
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5603]	[rocket/net/eventloop.cc:183]	add event success, fd[11]
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5603]	[rocket/net/timer.cc:14]	timer fd = 12
+[INFO]	[23-10-31 17:00:45.76]	[5599:5603]	[rocket/net/eventloop.cc:183]	epoll_event.events = 1
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5603]	[rocket/net/eventloop.cc:183]	add event success, fd[12]
+[INFO]	[23-10-31 17:00:45.76]	[5599:5603]	[rocket/net/eventloop.cc:65]	succ create event loop in thread 5603
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5603]	[rocket/net/io_thread.cc:48]	IOThread 5603 created, wait start semaphore
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5599]	[rocket/net/io_thread.cc:23]	io thread:[5603] create success
+[INFO]	[23-10-31 17:00:45.76]	[5599:5604]	[rocket/net/eventloop.cc:93]	wakeup fd = 14
+[INFO]	[23-10-31 17:00:45.76]	[5599:5604]	[rocket/net/eventloop.cc:183]	epoll_event.events = 1
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5604]	[rocket/net/eventloop.cc:183]	add event success, fd[14]
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5604]	[rocket/net/timer.cc:14]	timer fd = 15
+[INFO]	[23-10-31 17:00:45.76]	[5599:5604]	[rocket/net/eventloop.cc:183]	epoll_event.events = 1
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5604]	[rocket/net/eventloop.cc:183]	add event success, fd[15]
+[INFO]	[23-10-31 17:00:45.76]	[5599:5604]	[rocket/net/eventloop.cc:65]	succ create event loop in thread 5604
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5604]	[rocket/net/io_thread.cc:48]	IOThread 5604 created, wait start semaphore
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5599]	[rocket/net/io_thread.cc:23]	io thread:[5604] create success
+[INFO]	[23-10-31 17:00:45.76]	[5599:5605]	[rocket/net/eventloop.cc:93]	wakeup fd = 17
+[INFO]	[23-10-31 17:00:45.76]	[5599:5605]	[rocket/net/eventloop.cc:183]	epoll_event.events = 1
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5605]	[rocket/net/eventloop.cc:183]	add event success, fd[17]
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5605]	[rocket/net/timer.cc:14]	timer fd = 18
+[INFO]	[23-10-31 17:00:45.76]	[5599:5605]	[rocket/net/eventloop.cc:183]	epoll_event.events = 1
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5605]	[rocket/net/eventloop.cc:183]	add event success, fd[18]
+[INFO]	[23-10-31 17:00:45.76]	[5599:5605]	[rocket/net/eventloop.cc:65]	succ create event loop in thread 5605
+[DEBUG]	[23-10-31 17:00:45.76]	[5599:5605]	[rocket/net/io_thread.cc:48]	IOThread 5605 created, wait start semaphore
+[DEBUG]	[23-10-31 17:00:45.77]	[5599:5599]	[rocket/net/io_thread.cc:23]	io thread:[5605] create success
+[INFO]	[23-10-31 17:00:45.77]	[5599:5599]	[rocket/net/eventloop.cc:183]	epoll_event.events = 1
+[DEBUG]	[23-10-31 17:00:45.77]	[5599:5599]	[rocket/net/eventloop.cc:183]	add event success, fd[6]
+[INFO]	[23-10-31 17:00:45.77]	[5599:5599]	[rocket/net/tcp/tcp_server.cc:11]	rocket TcpServer listen sucess on [127.0.0.1:0]
+[DEBUG]	[23-10-31 17:00:45.77]	[5599:5599]	[rocket/net/io_thread.cc:60]	Now invoke IOThread 5602
+[DEBUG]	[23-10-31 17:00:45.77]	[5599:5599]	[rocket/net/io_thread.cc:60]	Now invoke IOThread 5603
+[DEBUG]	[23-10-31 17:00:45.77]	[5599:5599]	[rocket/net/io_thread.cc:60]	Now invoke IOThread 5604
+[DEBUG]	[23-10-31 17:00:45.77]	[5599:5599]	[rocket/net/io_thread.cc:60]	Now invoke IOThread 5605
+[DEBUG]	[23-10-31 17:00:45.77]	[5599:5602]	[rocket/net/io_thread.cc:50]	IOThread 5602 start loop 
+[DEBUG]	[23-10-31 17:00:45.77]	[5599:5603]	[rocket/net/io_thread.cc:50]	IOThread 5603 start loop 
+[DEBUG]	[23-10-31 17:00:45.77]	[5599:5604]	[rocket/net/io_thread.cc:50]	IOThread 5604 start loop 
+[DEBUG]	[23-10-31 17:00:45.77]	[5599:5605]	[rocket/net/io_thread.cc:50]	IOThread 5605 start loop 
+[DEBUG]	[23-10-31 17:00:45.176]	[5599:5599]	[rocket/net/eventloop.cc:129]	now end epoll_wait, rt = 1
+[DEBUG]	[23-10-31 17:00:45.176]	[5599:5599]	[rocket/net/eventloop.cc:143]	unkonow event = 1
+[DEBUG]	[23-10-31 17:00:45.176]	[5599:5599]	[rocket/net/eventloop.cc:146]	fd 5 trigger EPOLLIN event
+[DEBUG]	[23-10-31 17:00:45.176]	[5599:5599]	[rocket/net/timer_event.cc:16]	success create timer event, will excute at [1698742845176]
+[DEBUG]	[23-10-31 17:00:45.176]	[5599:5599]	[rocket/net/timer.cc:106]	timer reset to 1698742845276
+[DEBUG]	[23-10-31 17:00:45.176]	[5599:5599]	[rocket/net/timer.cc:106]	timer reset to 1698742845276
+[DEBUG]	[23-10-31 17:00:45.276]	[5599:5599]	[rocket/net/eventloop.cc:129]	now end epoll_wait, rt = 1
+[DEBUG]	[23-10-31 17:00:45.277]	[5599:5599]	[rocket/net/eventloop.cc:143]	unkonow event = 1
+[DEBUG]	[23-10-31 17:00:45.277]	[5599:5599]	[rocket/net/eventloop.cc:146]	fd 5 trigger EPOLLIN event
+[DEBUG]	[23-10-31 17:00:45.277]	[5599:5599]	[rocket/net/timer_event.cc:16]	success create timer event, will excute at [1698742845277]
+[DEBUG]	[23-10-31 17:00:45.277]	[5599:5599]	[rocket/net/timer.cc:106]	timer reset to 1698742845377
+[DEBUG]	[23-10-31 17:00:45.277]	[5599:5599]	[rocket/net/timer.cc:106]	timer reset to 1698742845377

@@ -45,26 +45,27 @@ void makeOrder(google::protobuf::RpcController* controller,
     
 };
 
-void test_tcp_server() {
-    rocket::IPNetAddr::s_ptr addr = std::make_shared<rocket::IPNetAddr>("127.0.0.1", 12345);
-    DEBUGLOG("create addr %s", addr->toString().c_str());
 
-    rocket::TcpServer tcp_server(addr);
-
-    tcp_server.start();
-}
-
-
-
-int main() {
-    rocket::Config::SetGlobalConfig("../conf/rocket.xml");
+int main(int argc, char* argv[]) {
+    if(argc != 2) {
+        printf("Start test_rpc_server err, argc != 2\n");
+        printf("like this:\n");
+        printf("./test_rpc_server ../conf/rocket.xml\n");
+        return 0;
+    }
+    rocket::Config::SetGlobalConfig(argv[1]);
     rocket::Logger::InitGlobalLogger();
 
     // 注册服务
     std::shared_ptr<OrderImpl> service = std::make_shared<OrderImpl>();
     rocket::RpcDispatcher::GetRpcDispatcher()->registerService(service);
 
-    test_tcp_server();
+    rocket::IPNetAddr::s_ptr addr = std::make_shared<rocket::IPNetAddr>("127.0.0.1", rocket::Config::GetGlobalConfig()->m_port);
+    DEBUGLOG("create addr %s", addr->toString().c_str());
+
+    rocket::TcpServer tcp_server(addr);
+
+    tcp_server.start();
 
     return 0;
 }

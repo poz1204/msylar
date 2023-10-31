@@ -152,11 +152,11 @@ void test_rpc_channel() {
 
 
 int main() {
-    rocket::Config::SetGlobalConfig("../conf/rocket_client.xml");
-    rocket::Logger::InitGlobalLogger();
+    rocket::Config::SetGlobalConfig(NULL);
+    rocket::Logger::InitGlobalLogger(0);
 
     // test_connect();
-    //test_tcp_client();
+    // test_tcp_client();
     test_rpc_channel();
 
     INFOLOG("test channel rpc end");

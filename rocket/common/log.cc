@@ -76,7 +76,7 @@ void Logger::init() {
 }
 
 
-
+// 0 同步   1 异步
 void Logger::InitGlobalLogger(int type /*=1*/) {
     LogLevel global_log_level = StringToLogLevel(Config::GetGlobalConfig()->m_log_level);
     printf("Init log level [%s]\n", LogLevelToString(global_log_level).c_str());
@@ -85,6 +85,10 @@ void Logger::InitGlobalLogger(int type /*=1*/) {
 }
 
 void Logger::pushLog(const std::string& msg) {
+    if(m_type == 0) {   // 同步日志 -》 直接打印到控制台
+        printf((msg + "\n").c_str());
+        return;
+    }
     ScopeMutex<Mutex> lock(m_mutex);
     m_buffer.push_back(msg);
     lock.unlock();
