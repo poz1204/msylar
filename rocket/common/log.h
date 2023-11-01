@@ -76,10 +76,10 @@ std::string formatString(const char* str, Args&&... args) {
 
 
 enum LogLevel {
-  Unknown = 0,
-  Debug = 1,
-  Info = 2,
-  Error = 3
+    Unknown = 0,
+    Debug = 1,
+    Info = 2,
+    Error = 3
 };
 
 
@@ -126,7 +126,7 @@ public:
     typedef std::shared_ptr<Logger> s_ptr;
 
     Logger(LogLevel level) : m_set_level(level) {}
-    Logger(LogLevel level, int type = 1);
+    Logger(LogLevel level, int type = 1);   // type = 0 代表不输出到文件，只输出到控制台
 
     void pushLog(const std::string& msg);
     void pushAppLog(const std::string& msg);
@@ -167,28 +167,26 @@ private:
 
 
 class LogEvent {
- public:
+public:
+    LogEvent(LogLevel level) : m_level(level) {}
 
-  LogEvent(LogLevel level) : m_level(level) {}
+    std::string getFileName() const {
+        return m_file_name;  
+    }
 
-  std::string getFileName() const {
-    return m_file_name;  
-  }
+    LogLevel getLogLevel() const {
+        return m_level;
+    }
 
-  LogLevel getLogLevel() const {
-    return m_level;
-  }
+    std::string toString();
 
-  std::string toString();
+private:
+    std::string m_file_name;  // 文件名
+    int32_t m_file_line;  // 行号
+    int32_t m_pid;  // 进程号
+    int32_t m_thread_id;  // 线程号
 
-
- private:
-  std::string m_file_name;  // 文件名
-  int32_t m_file_line;  // 行号
-  int32_t m_pid;  // 进程号
-  int32_t m_thread_id;  // 线程号
-
-  LogLevel m_level;     //日志级别
+    LogLevel m_level;     //日志级别
 
 };
 

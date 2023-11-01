@@ -19,7 +19,7 @@ public:
     void start();
     void join();
 
-    IOThread* getIOThread();
+    IOThread* getIOThread();    // 轮询
 
 private:
     size_t m_size {0};

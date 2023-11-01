@@ -97,7 +97,7 @@ void EventLoop::initWakeUpFdEevent() {
     m_wakeup_fd_event->listen(FdEvent::IN_EVENT, [this]() {
         char buf[8];
         while(read(m_wakeup_fd, buf, 8) != -1 && errno != EAGAIN) {
-            // 把字节读完
+            // 把字节读完    EAGAIN：连续读但没数据读返回
         }
         DEBUGLOG("read full bytes from wakeup fd[%d]", m_wakeup_fd);
     });

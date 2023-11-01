@@ -114,6 +114,7 @@ void Timer::addTimerEvent(TimerEvent::s_ptr event) {
         is_reset_timerfd = true;    // 需要重新设置不然fd不会触发
     } else {
         auto it = m_pending_events.begin();
+        // 如果新加入的定时任务比当前最小的定时任务还小 需要重新设置超时时间
         if((*it).second->getArriveTime() > event->getArriveTime()) {
             is_reset_timerfd = true;
         }

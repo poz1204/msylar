@@ -47,7 +47,7 @@ void FdEvent::listen(TriggerEvent event_type, std::function<void()> callback, st
         m_error_callback = nullptr;
     }
 
-    m_listen_events.data.ptr = this;
+    m_listen_events.data.ptr = this;    // 用于读cb
 }
 
 void FdEvent::setNonBlock() {

@@ -25,10 +25,8 @@ std::string LogLevelToString(LogLevel level) {
     switch (level) {
     case Debug:
         return "DEBUG";
-
     case Info:
         return "INFO";
-
     case Error:
         return "ERROR";
     default:
@@ -71,7 +69,8 @@ void Logger::init() {
     if (m_type == 0) {
         return;
     }
-    m_timer_event = std::make_shared<TimerEvent>(Config::GetGlobalConfig()->m_log_sync_inteval, true, std::bind(&Logger::syncLoop, this));
+    m_timer_event = std::make_shared<TimerEvent>(Config::GetGlobalConfig()->m_log_sync_inteval, 
+                                                true, std::bind(&Logger::syncLoop, this));
     EventLoop::GetCurrentEventLoop()->addTimerEvent(m_timer_event);
 }
 
@@ -133,31 +132,27 @@ void Logger::syncLoop() {
 
 // -------------------------------------------
 std::string LogEvent::toString() {
-  struct timeval now_time;
+    struct timeval now_time;
+    gettimeofday(&now_time, nullptr);
 
-  gettimeofday(&now_time, nullptr);
+    struct tm now_time_t;
+    localtime_r(&(now_time.tv_sec), &now_time_t);
 
-  struct tm now_time_t;
-  localtime_r(&(now_time.tv_sec), &now_time_t);
+    char buf[128];
+    strftime(&buf[0], 128, "%y-%m-%d %H:%M:%S", &now_time_t);
+    std::string time_str(buf);
+    int ms = now_time.tv_usec / 1000;
+    time_str = time_str + "." + std::to_string(ms);
 
-  char buf[128];
-  strftime(&buf[0], 128, "%y-%m-%d %H:%M:%S", &now_time_t);
-  std::string time_str(buf);
-  int ms = now_time.tv_usec / 1000;
-  time_str = time_str + "." + std::to_string(ms);
+    m_pid = getPid();
+    m_thread_id = getThreadId();
 
+    std::stringstream ss;
+    ss << "[" << LogLevelToString(m_level) << "]\t"
+        << "[" << time_str << "]\t"
+        << "[" << m_pid << ":" << m_thread_id << "]\t";
 
-  m_pid = getPid();
-  m_thread_id = getThreadId();
-
-  std::stringstream ss;
-
-  ss << "[" << LogLevelToString(m_level) << "]\t"
-    << "[" << time_str << "]\t"
-    << "[" << m_pid << ":" << m_thread_id << "]\t";
-
-    // 获取当前线程处理的请求的 msgid
-
+    // 获取当前线程处理的请求的 msgid    pb
     std::string msgid = RunTime::GetRunTime()->m_msgid;
     std::string method_name = RunTime::GetRunTime()->m_method_name;
     if (!msgid.empty()) {
@@ -167,20 +162,22 @@ std::string LogEvent::toString() {
     if (!method_name.empty()) {
         ss << "[" << method_name << "]\t";
     }
-  
+
     return ss.str();
 }
 
 
 
-
 // --------------------------------------
+
 AsyncLogger::AsyncLogger(const std::string& file_name, const std::string& file_path, int max_size) 
     : m_file_name(file_name), m_file_path(file_path), m_max_file_size(max_size) {
   
     sem_init(&m_sempahore, 0, 0);
     assert(pthread_create(&m_thread, NULL, &AsyncLogger::Loop, this) == 0);
-    sem_wait(&m_sempahore);
+    sem_wait(&m_sempahore); // > 0 减一返回     = 0 阻塞至 > 0
+    // 确保在启动新线程之后立即阻塞构造函数，直到新线程开始运行 AsyncLogger::Loop 函数为止。
+    // 这样可以在构造函数返回之前等待线程准备好并开始执行日志记录操作
 }
 
 
@@ -188,7 +185,7 @@ void* AsyncLogger::Loop(void* arg) {
     // 将 buffer 里面的全部数据打印到文件中，然后线程睡眠，直到有新的数据再重复这个过程
     AsyncLogger* logger = reinterpret_cast<AsyncLogger*>(arg); 
     assert(pthread_cond_init(&logger->m_condtion, NULL) == 0);
-    sem_post(&logger->m_sempahore);
+    sem_post(&logger->m_sempahore); // 唤醒正在等待该信号量的任意线程
 
     while(1) {
         ScopeMutex<Mutex> lock(logger->m_mutex);
@@ -198,6 +195,7 @@ void* AsyncLogger::Loop(void* arg) {
         }
         //printf("pthread_cond_wait back \n");
 
+        // 此时有数据了
         std::vector<std::string> tmp;
         tmp.swap(logger->m_buffer.front());
         logger->m_buffer.pop();
@@ -235,7 +233,7 @@ void* AsyncLogger::Loop(void* arg) {
             logger->m_file_hanlder = fopen(log_file_name.c_str(), "a"); // 追加写入
             logger->m_reopen_flag = false;
         }
-
+        // 分割日志
         if (ftell(logger->m_file_hanlder) > logger->m_max_file_size) {
             fclose(logger->m_file_hanlder);
 
@@ -273,7 +271,7 @@ void AsyncLogger::flush() {
 void AsyncLogger::pushLogBuffer(std::vector<std::string>& vec) {
     ScopeMutex<Mutex> lock(m_mutex);
     m_buffer.push(vec);
-    pthread_cond_signal(&m_condtion);
+    pthread_cond_signal(&m_condtion); // 有了数据 - 解除m_cond上的阻塞 - 进入loop
 
     lock.unlock();
 

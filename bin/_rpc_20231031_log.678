@@ -1,6 +1,0 @@
-[DEBUG]	[23-10-31 17:01:53.494]	[5599:5599]	[rocket/net/eventloop.cc:129]	now end epoll_wait, rt = 1
-[DEBUG]	[23-10-31 17:01:53.494]	[5599:5599]	[rocket/net/eventloop.cc:143]	unkonow event = 1
-[DEBUG]	[23-10-31 17:01:53.494]	[5599:5599]	[rocket/net/eventloop.cc:146]	fd 5 trigger EPOLLIN event
-[DEBUG]	[23-10-31 17:01:53.494]	[5599:5599]	[rocket/net/timer_event.cc:16]	success create timer event, will excute at [1698742913494]
-[DEBUG]	[23-10-31 17:01:53.494]	[5599:5599]	[rocket/net/timer.cc:106]	timer reset to 1698742913594
-[DEBUG]	[23-10-31 17:01:53.494]	[5599:5599]	[rocket/net/timer.cc:106]	timer reset to 1698742913594

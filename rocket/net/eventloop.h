@@ -47,7 +47,7 @@ private:
     bool m_stop_flag {false};
 
     std::set<int> m_listen_fds;
-    std::queue<std::function<void()>> m_pending_tasks;
+    std::queue<std::function<void()>> m_pending_tasks;  // 待执行
 
     Mutex m_mutex;
     Timer* m_timer {NULL};

@@ -9,7 +9,7 @@
 namespace rocket {
 
 IOThread::IOThread() {
-    // 1.创建新线程 2.eventloop
+    // 1.创建新线程 2.eventloop-进入新thread开始执行
 
     int rt = sem_init(&m_init_semaphore, 0, 0);
     assert(rt == 0);

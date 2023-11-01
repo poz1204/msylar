@@ -23,7 +23,8 @@ public:
 
     std::function<void()> handler(TriggerEvent event_type); //返回触发事件回调
 
-     void listen(TriggerEvent event_type, std::function<void()> callback, std::function<void()> error_callback = nullptr); //设置cb 保存epoll_events
+    void listen(TriggerEvent event_type, std::function<void()> callback, 
+                std::function<void()> error_callback = nullptr); //设置cb 保存epoll_events
 
     int getFd() const {
         return m_fd;
